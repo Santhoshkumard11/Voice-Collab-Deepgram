@@ -332,6 +332,10 @@ def get_chatbot_response(recognized_text: str):
 
     request_status, response_text = False, ""
 
+    # return false status when we don't have the OpenAI API key in the environment
+    if not openai.api_key:
+        return request_status, [response_text]
+
     # clean the trigger commands from the text before sending it to the model
     clean_recognized_text = cleanse_recognized_text(
         recognized_text, BOT_INITIALIZE_COMMANDS
@@ -376,6 +380,10 @@ def generate_code(recognized_text: str):
     """
 
     request_status, response_text = False, ""
+
+    # return false status when we don't have the OpenAI API key in the environment
+    if not openai.api_key:
+        return request_status, [response_text]
 
     # clean the trigger commands from the text before sending it to the model
     clean_recognized_text = cleanse_recognized_text(
