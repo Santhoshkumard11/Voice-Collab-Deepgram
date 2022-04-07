@@ -1,34 +1,29 @@
 import logging
-import speech_recognition as sr
 import asyncio
-import websockets
 import json
 from utils import setup_logging, execute_command
 import os
+from flask import Flask, render_template
+from deepgram import Deepgram
+from dotenv import load_dotenv
+from aiohttp import web
+from aiohttp_wsgi import WSGIHandler
+from typing import Dict, Callable
 
-# Initialize the recognizer
-recognizer_obj: sr.Recognizer = sr.Recognizer()
+
+load_dotenv()
+
+app = Flask("voice_collab", template_folder="./templates")
+
+dg_client = Deepgram(os.getenv("DEEPGRAM_API_KEY"))
 
 
-async def sender(ws: websockets):
-    """Send the text info to the connected client
+async def process_audio(ws: web.WebSocketResponse):
+    async def get_transcript(data: Dict) -> None:
+        if "channel" in data:
+            recognized_text = data["channel"]["alternatives"][0]["transcript"]
 
-    Args:
-        ws (websockets): Websocket Client
-    """
-
-    while True:
-        try:
-            with sr.Microphone() as audio_source:
-
-                recognizer_obj.adjust_for_ambient_noise(audio_source, duration=0.5)
-
-                # listens for the user's input
-                audio_input = recognizer_obj.listen(audio_source)
-
-                # Using google to recognize audio
-                recognized_text = recognizer_obj.recognize_google(audio_input).lower()
-
+            if recognized_text:
                 logging.info(f"Recognized text - {recognized_text}")
 
                 # this stops the entire server and closes all the websocket connection for a smooth exit
@@ -42,49 +37,59 @@ async def sender(ws: websockets):
                 text_to_send = execute_command(recognized_text)
 
                 # if we have any return value send it to the client
-                if text_to_send:
-                    await ws.send(json.dumps({"message": text_to_send}))
+                if text_to_send and recognized_text:
+                    await ws.send_str(text_to_send)
 
-                if recognized_text:
-                    payload = json.dumps({"message": recognized_text})
-                    await ws.send(payload)
+                # if recognized_text:
+                #     payload = json.dumps({"message": recognized_text})
+                #     await ws.send_json(payload)
 
-        except KeyboardInterrupt:
-            logging.warning("Closing voice recognizer from keyboard interrupt")
-            await ws.close(3001, "User command - Keyboard Interrupt")
-            await ws.wait_closed()
-            os._exit(0)
+    deepgram_socket = await connect_to_deepgram(get_transcript)
 
-        except sr.RequestError:
-            logging.exception("Could not request results")
-
-        except sr.UnknownValueError:
-            logging.warning("Can't detect what you said!!")
-
-        except Exception:
-            logging.exception("A error occurred")
+    return deepgram_socket
 
 
-async def handler(ws):
-    """This method receives data and responsible for calling sender method
+async def connect_to_deepgram(
+    transcript_received_handler: Callable[[Dict], None]
+) -> str:
+    try:
+        socket = await dg_client.transcription.live(
+            {"punctuate": True, "interim_results": False}
+        )
+        socket.registerHandler(
+            socket.event.CLOSE, lambda c: print(f"Connection closed with code {c}.")
+        )
+        socket.registerHandler(
+            socket.event.TRANSCRIPT_RECEIVED, transcript_received_handler
+        )
 
-    Args:
-        ws (websocket): Websocket Client
-    """
+        return socket
+    except Exception as e:
+        raise Exception(f"Could not open socket: {e}")
+
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+async def socket(request):
+    ws = web.WebSocketResponse()
+    await ws.prepare(request)
+
+    deepgram_socket = await process_audio(ws)
 
     while True:
-        received = await ws.recv()
-        logging.info(f"extention - {received}")
-        await sender(ws)
-
-
-async def main():
-
-    # initialize the logging and start the voice recognition server
-    setup_logging()
-    async with websockets.serve(handler, "localhost", 8001):
-        await asyncio.Future()
+        data = await ws.receive_bytes()
+        deepgram_socket.send(data)
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    setup_logging()
+    loop = asyncio.get_event_loop()
+    aio_app = web.Application()
+    wsgi = WSGIHandler(app)
+    aio_app.router.add_route("*", "/{path_info: *}", wsgi.handle_request)
+    aio_app.router.add_route("GET", "/listen", socket)
+    logging.info(f"Server started at {os.getcwd()}")
+    web.run_app(aio_app, port=8002)
