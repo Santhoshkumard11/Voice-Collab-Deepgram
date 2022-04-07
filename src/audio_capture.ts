@@ -6,18 +6,19 @@ import { recognizer } from "./utils";
 import * as vscode from "vscode";
 import { mapCommand } from "./helper";
 
+let webSocketURL = "ws://localhost:8002/listen";
 export function activateVoice() {
   /** This initiates a WebSocket connection with the Python voice recognition server */
 
   
   if (!ws) {
-    ws = new WebSocket("ws://localhost:8001");
+    ws = new WebSocket(webSocketURL);
     log("Voice mode activated!");
   } else {
     // if the connection is other than connected
     if (ws.readyState !== 1) {
       ws.close();
-      ws = new WebSocket("ws://localhost:8001");
+      ws = new WebSocket(webSocketURL);
       log("Creating a new WebSocket connection");
     } else {
       log("There is an existing WebSocket connection");
@@ -27,7 +28,7 @@ export function activateVoice() {
 
   // called once the WebSocket connection is open
   ws.onopen = () => {
-    ws.send("Connected with extension");
+    // ws.send("Connected with extension");
     log("WebSocket connection is open!");
 
     // set the status to listening
@@ -78,7 +79,7 @@ export function deactivateVoice() {
   /** This closes the WebSocket connection */
   
   log("Deactivate voice mode");
-  ws.send("Extension deactivated");
+  // ws.send("Extension deactivated");
   ws.close();
 
   recognizer.killRecognizer();

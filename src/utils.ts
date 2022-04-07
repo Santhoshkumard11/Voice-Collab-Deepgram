@@ -189,7 +189,7 @@ export async function installRequirements() {
     methodStatus = false;
     log("site-packages folder is not available or the virtual environment is not yet created!");
   }
-  log("Ended install requirements!")
+  log("Ended install requirements!");
   return methodStatus;
 }
 
