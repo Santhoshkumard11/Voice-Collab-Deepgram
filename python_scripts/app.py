@@ -13,7 +13,7 @@ from typing import Dict, Callable
 
 load_dotenv()
 
-app = Flask("voice_collab", template_folder="./templates")
+app = Flask("voice_collab", template_folder="./voice-collab-deepgram-templates")
 
 dg_client = Deepgram(os.getenv("DEEPGRAM_API_KEY"))
 

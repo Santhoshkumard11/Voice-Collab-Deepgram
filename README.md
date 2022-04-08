@@ -1,9 +1,9 @@
-# Voice Collab 🔊 👨‍💻👩‍💻 🦻
+# Voice Collab Deepgram 🔊 👨‍💻👩‍💻 🦻
 ---
-[![](https://vsmarketplacebadge.apphb.com/version-short/sandy-codes-py.voice-collab.svg)](https://marketplace.visualstudio.com/items?itemName=sandy-codes-py.voice-collab)
-[![](https://vsmarketplacebadge.apphb.com/rating-short/sandy-codes-py.voice-collab.svg)](https://marketplace.visualstudio.com/items?itemName=sandy-codes-py.voice-collab) 
+[![](https://vsmarketplacebadge.apphb.com/version-short/sandy-codes-py.voice-collab-deepgram.svg)](https://marketplace.visualstudio.com/items?itemName=sandy-codes-py.voice-collab-deepgram)
+[![](https://vsmarketplacebadge.apphb.com/rating-short/sandy-codes-py.voice-collab-deepgram.svg)](https://marketplace.visualstudio.com/items?itemName=sandy-codes-py.voice-collab-deepgram) 
 [![Build Status](https://dev.azure.com/sandy-codes-py/Voice-Collab/_apis/build/status/Voice-Collab?branchName=main)](https://dev.azure.com/sandy-codes-py/Voice-Collab/_build/latest?definitionId=1&branchName=main)
-![](https://vsmarketplacebadge.apphb.com/installs/sandy-codes-py.voice-collab.svg)
+![](https://vsmarketplacebadge.apphb.com/installs/sandy-codes-py.voice-collab-deepgram.svg)
 [![License: MIT ](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE)
 
 ## Let's harness the power of voice to collaborate and interact with your code and the people you work with
@@ -38,7 +38,7 @@
 - Create `.env` file inside `python_scripts` folder with the following variables to make the API's work
     - PERSONAL_ACCESS_TOKEN = "<paste your key>" # Azure DevOps token
     - OPENAI_API_KEY = "<paste your key>"
-- You need **internet connectivity** to get the speech transcription from `Google's API`
+- Copy the `voice-collab-deepgram-templates` folder to `C:\Users\<User>\AppData\Local\Programs\Microsoft VS Code` - replace `User` with your User name
 - Restart VS Code, you should see a 🔇stopped icon in the status bar and a success notification if the setup was successful ✅
 
 Read the [FAQ](#faq) below for possible issues you might face and how to `add your own custom commands`
@@ -103,7 +103,7 @@ Once you've set all the above them your good to go 🏁
         - speak_args - If set to true then it speaks out the return string from the method
     - Add the number os phrases with which this method should be triggered in `COMMAND_MAPPINGS` dict in `_command_mapping.py` file, the key should match the key in the  `COMMAND_DETAILS` dict 
 - Open developer tools from Help> Toggle Developer Tools in VS Code to see the logs
-- The speech recognition is done with **Google's free speech to text API** - get a paid API for a smoother experience
+- The speech recognition is done with **Deepgram's Deep Learning model**
 - Raise an issue if you're unable to resolve it yourself
 
 ## 💡 License
