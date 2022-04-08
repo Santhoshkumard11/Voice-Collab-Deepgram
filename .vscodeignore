@@ -27,3 +27,5 @@ out/test/**
 
 .gitignore
 .flake8
+
+snippet/

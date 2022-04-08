@@ -182,7 +182,7 @@ cython_debug/
 
 __snippet.ipynb
 __snippet.py
-
+snippet/
 
 out/
 node_modules/
