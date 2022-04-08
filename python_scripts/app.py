@@ -40,9 +40,8 @@ async def process_audio(ws: web.WebSocketResponse):
                 if text_to_send and recognized_text:
                     await ws.send_str(text_to_send)
 
-                # if recognized_text:
-                #     payload = json.dumps({"message": recognized_text})
-                #     await ws.send_json(payload)
+                if recognized_text:
+                    await ws.send_str(recognized_text)
 
     deepgram_socket = await connect_to_deepgram(get_transcript)
 

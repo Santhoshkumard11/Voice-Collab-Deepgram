@@ -174,7 +174,7 @@ def execute_command(recognized_text: str):
     """
 
     try:
-        command_info: dict = get_command_details(recognized_text)
+        command_info: dict = get_command_details(recognized_text.lower())
 
         # return  if nothing matches the commands we have
         if not command_info:
