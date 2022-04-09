@@ -53,7 +53,7 @@ async def connect_to_deepgram(
 ) -> str:
     try:
         socket = await dg_client.transcription.live(
-            {"punctuate": True, "interim_results": False}
+            {"interim_results": False, "language": "en-IN"}
         )
         socket.registerHandler(
             socket.event.CLOSE, lambda c: print(f"Connection closed with code {c}.")

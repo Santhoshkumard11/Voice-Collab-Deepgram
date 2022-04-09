@@ -1,17 +1,21 @@
-There is so much you can do with your voice but you need the right tools to make it happen as you like, this is where [Deepgram](https://console.deepgram.com/signup) comes into play. You get Real-Time speech to text translation.
+There is so much you can do with your voice but you need the right tools to make it happen as you like, this is where [Deepgram](https://console.deepgram.com/signup) comes into play. You get Real-Time speech-to-text translation.
 
 ### Overview of My Submission
-[Voice Collab Deepgram](https://marketplace.visualstudio.com/items?itemName=sandy-codes-py.voice-collab-deepgram) is a VS Code extension that Let's you harness the power of voice to collaborate and interact with your code and the people you work with. Often as a software developer you might feel like you're alone (at least I feel that way when I work on hackathon projects or working on something intense) so this extension not only gets the voice input but also talks with you. For every action phrase that it triggered there is a voice feedback so it makes the experience more humanly.
+[Voice Collab Deepgram](https://marketplace.visualstudio.com/items?itemName=sandy-codes-py.voice-collab-deepgram) is a VS Code extension that Lets you harness the power of voice to collaborate and interact with your code and the people you work with. Often as a software developer, you might feel like you're alone (at least I feel that way when I work on hackathon projects or working on something intense) so this extension not only gets the voice input but also talks with you. For every action phrase that it triggered there is voice feedback so it makes the experience more humanly.
+
+[Click here to get the extension from VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=sandy-codes-py.voice-collab-deepgram) or type `voice collab deepgram` in your VS Code extension explorer
 
 ### Submission Category: Wacky Wildcards
 
+
 ## 🎬 YouTube - Live Demo
 
-{% embed https://www.youtube.com/watch?v=BxZt7UkQ_-E %}
+{% embed https://www.youtube.com/watch?v=BsA1FwQfPGA %}
+
 
 ## 💻 GitHub Repo
-{% embed https://github.com/Santhoshkumard11/Voice-Collab-Deepgram %}
 
+{% embed https://github.com/Santhoshkumard11/Voice-Collab-Deepgram %}
 
 
 ## 🔥 What it can do? (everything with just voice)
@@ -49,12 +53,10 @@ There is so much you can do with your voice but you need the right tools to make
 | Generate code (OpenAI API Key required)                             | say - hey codex or codex and then say what you want Example: Create a Python class with name Employee, Create a Python dictionary with country and it's capitals |
 
 ### Conclusion
-This is a developer friendly VS Code extension that can be expanded with a bit of work. It's more focused on developers who needs things to be done with voice. Just turn it on and enjoy the conversation while you work.
+This is a developer-friendly VS Code extension that can be expanded with a bit of work. It's more focused on developers who need things to be done with voice. Just turn it on and enjoy the conversation while you work.
 
 
-A detailed instruction can be found on the [repo's README.md file](https://github.com/Santhoshkumard11/Voice-Collab-Deepgram#readme). 
-
-------
+Detailed instructions can be found on the [repo's README.md file](https://github.com/Santhoshkumard11/Voice-Collab-Deepgram#readme). 
 
 #### My Specs - Tested
 - Python 3.7
@@ -68,7 +70,7 @@ A detailed instruction can be found on the [repo's README.md file](https://githu
 {% embed https://dev.to/sandy_codes_py %}
 
 ## Let's connect
-#### [LinkedIn](https://linkedin.com/in/santhosh-kumard)
+#### [LinkedIn](https://linkedin.com/in/santhosh-kumard) - 10K Fam
 
 #### [Instagram](https://www.instagram.com/santhoshgoku)
 

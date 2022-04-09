@@ -1,6 +1,6 @@
 {
-	"name": "voice-collab",
-	"displayName": "Voice Collab",
+	"name": "voice-collab-deepgram",
+	"displayName": "Voice Collab Deepgram",
 	"description": "Let's harness the power of voice to collaborate and interact with your code and the people you work with.",
 	"version": "0.0.1",
 	"publisher": "sandy-codes-py",
@@ -26,9 +26,9 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Santhoshkumard11/Voice-Collab"
+		"url": "https://github.com/Santhoshkumard11/Voice-Collab-Deepgram"
 	},
-	"homepage": "https://github.com/Santhoshkumard11/Voice-Collab/blob/master/README.md",
+	"homepage": "https://github.com/Santhoshkumard11/Voice-Collab-Deepgram#readme",
 	"keywords": [
 		"azure",
 		"azure devops",

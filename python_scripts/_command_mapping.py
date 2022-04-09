@@ -166,7 +166,7 @@ def add_msft_account_to_commands():
 
         COMMAND_MAPPINGS.get(4).append(f"call {name.lower()}")
         COMMAND_MAPPINGS.get(5).append(f"mail {name.lower()}")
-        COMMAND_MAPPINGS.get(6).append(f"open {name.lower()}'s chat")
+        COMMAND_MAPPINGS.get(6).append(f"open {name.lower()} chat")
 
 
 add_msft_account_to_commands()
