@@ -29,7 +29,7 @@
 ## ⚙ Setup the environment - Windows
 - Requires - `Python 3.7 and above`
 - Requires - `node ^12`
-- Once you install the extension, hit `Ctrl+r` to open RUN and type `%USERPROFILE%\.vscode\extensions`
+- Once you install the extension, hit `Ctrl+r` to open Run and type `%USERPROFILE%\.vscode\extensions`
 - Search for sandy-codes-py voice collab extension
 - Open a Powershell/command prompt inside the extension folder and execute `npm install` - this will install all the node modules required
 - Inside the same folder create a python virtual environment `py -m venv venv`
@@ -37,7 +37,7 @@
 - The Microsoft Team call,chat and outlook email option will use your `default browser`, change this from the system settings if you want to open up in another browser
 - Create `.env` file inside `python_scripts` folder with the following variables to make the API's work
     - PERSONAL_ACCESS_TOKEN = "<paste your key>" # Azure DevOps token
-    - OPENAI_API_KEY = "<paste your key>"
+    - OPENAI_API_KEY = "<paste your key>" # Optional
 - Copy the `voice-collab-deepgram-templates` folder to `C:\Users\<User>\AppData\Local\Programs\Microsoft VS Code` - replace `User` with your User name
 - Restart VS Code, you should see a 🔇stopped icon in the status bar and a success notification if the setup was successful ✅
 
@@ -48,7 +48,7 @@ Once you've set all the above them your good to go 🏁
 ## 🤔 How to Use
 - Once the setup is done, open up the developer tools if you want to see the actual working of the extension (Help> Toggle Developer Tools)
 - Open the Command Palette `(Ctrl+Shift+P)`, type `Voice Collab :`
-- You should see the list of commands you can use, select `Start Recognizer server`, this will start the Python server which will accept the WebSocket connection on local host port `8001`
+- You should see the list of commands you can use, select `Start Recognizer server`, this will start the Python server which will accept the WebSocket connection on local host port `8002`
 - Open the Command Palette `(Ctrl+Shift+P)`, type `voice collab: connect to server`, this establishes a WebSocket connection from the extension to the local Python server 
 
 ### Now start speaking out the below commands to trigger the respective actions 🔊
@@ -78,8 +78,8 @@ Once you've set all the above them your good to go 🏁
 |    Commands                             |	                                 Description                                         |
 | --------------------------------------- | ------------------------------------------------------------------------------------ |
 | Voice Collab: Notification		      | This will send in a test notification to check if the extension runs without errors  |
-| Voice Collab: Start Recognizer Server   | Start the Python server that will accept WebSocket connections on port 8001          |
-| Voice Collab: Connect to server		  | Establish a WebSocket connection with the locally hosted Python server on port 8001  |
+| Voice Collab: Start Recognizer Server   | Start the Python server that will accept WebSocket connections on port 8002          |
+| Voice Collab: Connect to server		  | Establish a WebSocket connection with the locally hosted Python server on port 8002  |
 | Voice Collab: Stop Voice Recognizer	  | Terminate the Python server                                                          |
 | Voice Collab: Disconnect from server	  | Close the WebSocket connection with the Python server                                |
 | Voice Collab: Setup virtual Environment | Create the virtual environment for the PIP packages for the server to run            |
