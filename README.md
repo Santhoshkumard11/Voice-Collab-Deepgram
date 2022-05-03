@@ -8,6 +8,15 @@
 
 ## Let's harness the power of voice to collaborate and interact with your code and the people you work with
 
+## YouTube Demo Video 📺📺
+### [Click here to watch the demo](https://www.youtube.com/watch?v=BsA1FwQfPGA&ab_channel=LateNightCodewithSanthosh)
+
+
+<a href="https://youtu.be/BsA1FwQfPGA">
+  <img src="https://img.youtube.com/vi/BsA1FwQfPGA/hqdefault.jpg" alt="video">
+</a>
+
+
 <p align="center">
 <img src="media/voice-collab-gif.gif" alt="GIF" width="800" />
 </p>
